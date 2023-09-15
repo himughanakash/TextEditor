@@ -1,9 +1,9 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import About from './components/About';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
-import About from './components/About';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
       msg: message,
       type: type
     })
-
     setTimeout(() =>{
       setAlert(null);
     },1500);
@@ -36,14 +35,12 @@ function App() {
 
   return (
     <>
-      {/*  <Navbar title="TextEditor" aboutText="About Us" /> */}
-      {/* <Navbar/> */}
       <BrowserRouter>
       <Navbar title="TextEditor" mode ={mode} toggleMode = {toggleMode} />
       <Alert alert={alert}/> 
       <div className = "container my-3">
       <Routes>
-        <Route path="/about" element={<About/>}>
+        <Route path="/about" element={<About mode = {mode}/>}>
         </Route>
         <Route path="/" element={<TextForm showAlert = {showAlert} heading = "Enter the text to convert" mode = {mode}/>}>
         </Route>
